@@ -17,3 +17,4 @@ string toUpperCase(string palavra)
     }
     return palavraUpper;
 }
+

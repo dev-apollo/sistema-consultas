@@ -59,3 +59,5 @@ Paciente getPacienteById(vector<Paciente> pacientes, int id)
     }
     return pacienteEncontrado;
 }
+
+

@@ -14,4 +14,5 @@ struct Paciente {
 vector<Paciente> getPacientes(string enderecoLista);
 void cadastrarPaciente(string enderecoArquivo);
 Paciente getPacienteById(vector<Paciente> pacientes, int id);
+
 #endif

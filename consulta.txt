@@ -1,1 +1,10 @@
-1,2,02/10/2024,Dor de cabeca,lalalala
+1,1,01/10/2024,Dor no peito,Repouso e analgésico
+2,2,02/10/2024,Febre alta,Antitérmico e hidratação
+3,3,03/10/2024,Dor nas costas,Fisioterapia e anti-inflamatório
+4,4,04/10/2024,Manchas na pele,Pomada dermatológica
+5,5,05/10/2024,Dor de cabeça,Analgesia e repouso
+1,3,06/10/2024,Dificuldade para caminhar,Exercícios de alongamento
+2,1,07/10/2024,Fadiga,Suplementação vitamínica
+3,5,08/10/2024,Tontura,Exames laboratoriais
+4,4,09/10/2024,Coceira,Creme anti-histamínico
+5,2,10/10/2024,Dor abdominal,Antiespasmódico

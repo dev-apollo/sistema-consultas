@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include "utilitarios.hpp"
+#include "medicos.hpp"
 using namespace std;
 
 void cadastrarConsulta(string enderecoArquivo)
@@ -62,3 +63,111 @@ vector<Paciente> getPacientesByDoctor_(vector<Paciente> pacientes, vector<Consul
     }
     return pacienteEncontrado;
 }
+
+
+vector<string> getPacientesByEspecialidade(vector<Consulta> consultas, vector<Medico> medicos)
+{
+    int id;
+    cout << "Informe o id do paciente: ";
+    cin >> id;
+    vector<string> especialidades;
+    for(Consulta c: consultas){
+        if (c.idPaciente == id)
+        {
+            for(Medico m:medicos){
+                if (c.idMedico == m.id)
+                {
+                    especialidades.push_back(m.especialidade);
+                }
+                
+            }
+        }
+        
+    }
+
+
+    return especialidades;
+}
+
+int qtdConsultasPorMedico(vector<Consulta> consultas, vector<Medico> medicos)
+{
+    int id, qtd;
+    bool medicoExiste = false;
+    do
+    {
+        cout << "Informe o id do medico: ";
+        cin >> id;
+        medicoExiste = verificarIdMedico(id, medicos);
+        if (!medicoExiste)
+        {
+            cout << "Id invalido" << endl;
+        }
+        
+    } while (!medicoExiste);
+    
+
+    for(Consulta c: consultas){
+        if(c.idMedico == id){
+            qtd++;
+        }
+    }
+    return qtd;
+}
+
+vector<string> historicoReceitas(vector<Consulta> consultas, vector<Medico> medicos, vector<Paciente> pacientes)
+{
+    int idPaciente, idMedico;
+    bool medicoExiste, pacienteExiste;
+    do
+    {
+        cout << "Informe o id do paciente: ";
+        cin >> idPaciente;
+        cout << "Informe o id do medico: ";
+        cin >> idMedico;
+
+        medicoExiste = verificarIdMedico(idMedico, medicos);
+        pacienteExiste = verificarIdPaciente(idPaciente, pacientes);
+        if (!medicoExiste)
+        {
+            cout << "Id do medico invalido!" << endl;
+        }
+        if(!pacienteExiste){
+            cout << "Id do paciente invalido!" << endl;
+        }
+        
+    } while (!medicoExiste || !pacienteExiste);
+    
+   
+
+    vector<string> receitas;
+    for(Consulta c: consultas){
+        if (c.idPaciente == idPaciente && c.idMedico == idMedico)
+        {
+            receitas.push_back(c.receitaMedico);
+        }
+        
+    }
+    return receitas;
+}
+
+bool verificarIdMedico(int id, vector<Medico> medicos)
+{
+     for(Medico m : medicos) {
+        if(m.id == id) {
+            return true; 
+        }
+    }
+    return false; 
+}
+
+bool verificarIdPaciente(int id, vector<Paciente> pacientes)
+{
+       for(Paciente p : pacientes) {
+        if(p.id == id) {
+            return true; 
+        }
+    }
+    return false; 
+}
+
+
